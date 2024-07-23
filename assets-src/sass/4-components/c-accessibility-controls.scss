@@ -1,0 +1,32 @@
+div[vw] {
+    top: 300px !important;
+}
+
+.plugin-accessibility {
+    position: relative;
+    .controls {
+        position: fixed;
+        top: 176px;
+        right: 10px;
+
+        .actions-itens {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border: solid 1px #ebe9e9;
+            border-radius: 10px;
+            padding: 10px;
+            gap: 5px;
+            .itens {
+                display: flex;
+                .item {
+                    svg {
+                        height: 30px;
+                        width: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

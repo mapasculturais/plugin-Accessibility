@@ -18,18 +18,25 @@ class Plugin extends \MapasCulturais\Plugin
     {
         $app = App::i();
 
-        // enqueue scripts and styles
-        $app->view->enqueueScript('app', 'accessibility', 'js/accessibility.js');
-        $app->view->enqueueStyle('app', 'accessibility', 'css/accessibility.css');
+        $app->view->enqueueStyle('app-v2', 'accessibility-v2', 'css/plugin-Accessibility.css');
+        $app->view->enqueueStyle('app-v2', 'contrast-accessibility-v2', 'css/accessibility.css');
          
         // add hooks
-        $app->hook('template(<<*>>.<<*>>.main-header):begin', function () use ($app) {
+        $app->hook('template(<<*>>.<<*>>.mc-header-menu):end', function () use ($app) {
             $this->part('accessibility/controls');
         });
 
-        $app->hook('template(<<*>>.<<*>>.main-header):end', function () use ($app) {
+        $app->hook('template(<<*>>.<<*>>.head):end', function () use ($app) {
             $this->part('accessibility/vlibras');    
         });    
+
+        $app->hook('component(mc-icon).iconset', function(&$iconset){
+            $iconset['access_accessibility'] = "carbon:accessibility-alt";
+            $iconset['access_adjust'] = "typcn:adjust-contrast";
+            $iconset['access_plus'] = "ei:plus";
+            $iconset['access_minus'] = "ei:minus";
+            $iconset['access_close'] = "ei:close-o";
+        });
     }
     /**
      * Registra os controladores e metadados das entidades
