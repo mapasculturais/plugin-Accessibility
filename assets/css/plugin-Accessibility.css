@@ -1,0 +1,42 @@
+/* ----- 1: SETTINGS ------- */
+/* ----- 2: ATOMS ------- */
+/* ----- 3: LAYOUT ------- */
+/* ----- 4: COMPONENTS ------- */
+div[vw] {
+  top: 440px !important;
+}
+
+@media (max-width: 1070px) {
+  div[vw-plugin-wrapper].active {
+    height: 375px;
+  }
+}
+
+.accessibility-controls {
+  position: relative;
+}
+.accessibility-controls__controls {
+  z-index: 1000;
+  position: fixed;
+  top: 110px;
+  right: 10px;
+}
+.accessibility-controls__actions-itens {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border: var(--mc-border-hairline) #ebe9e9;
+  border-radius: 10px;
+  padding: 10px;
+  gap: 5px;
+}
+.accessibility-controls__actions-itens .itens {
+  display: flex;
+}
+.accessibility-controls__actions-itens .item svg {
+  height: 30px;
+  width: 30px;
+}
+
+/* ----- 5: AREAS ------- */

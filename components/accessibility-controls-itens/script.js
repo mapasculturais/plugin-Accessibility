@@ -1,8 +1,10 @@
-app.component('accessibility-controls', {
-    template: $TEMPLATES['accessibility-controls'],
+app.component('accessibility-controls-itens', {
+    template: $TEMPLATES['accessibility-controls-itens'],
+    emits: [],
 
     setup(props, { slots }) {
         const hasSlot = name => !!slots[name]
+        
         return { hasSlot }
     },
 
@@ -19,17 +21,13 @@ app.component('accessibility-controls', {
         this.originalFontSizes();
     },
 
-    methods: {
-        toggleControls() {
-            this.open = !this.open;
-            const event = new CustomEvent("update:open", {
-                detail: {
-                  open: this.open
-                }
-              });
-            window.dispatchEvent(event);
-        },
+    created() {
+        window.addEventListener("update:open", (event) => {
+            this.open = event.detail.open;
+        });
+    },
 
+    methods: {
         ajustContrast() {
             document.body.classList.toggle("pojo-a11y-negative-contrast");
         },
@@ -72,13 +70,7 @@ app.component('accessibility-controls', {
                 item.element.style.fontSize = item.fontSize;
                 item.element.style.lineHeight = item.lineHeight;
             });
-        }, 
-
-        keepModalOpen() {
-            if (localStorage.getItem('accessibility-controls-open') === 'true') {
-                this.open = true;
-            }
-        }
+        },
 
     }
 });

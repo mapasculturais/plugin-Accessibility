@@ -28,7 +28,11 @@ class Plugin extends \MapasCulturais\Plugin
 
         $app->hook('template(<<*>>.<<*>>.head):end', function () use ($app) {
             $this->part('accessibility/vlibras');    
-        });    
+        }); 
+        
+        $app->hook('template(site.index.body):begin', function () use ($app) {
+            $this->part('accessibility/controls-itens');
+        });
 
         $app->hook('component(mc-icon).iconset', function(&$iconset){
             $iconset['access_accessibility'] = "carbon:accessibility-alt";
