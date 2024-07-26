@@ -30,7 +30,7 @@ class Plugin extends \MapasCulturais\Plugin
             $this->part('accessibility/vlibras');    
         }); 
         
-        $app->hook('template(site.index.body):begin', function () use ($app) {
+        $app->hook('template(<<*>>.<<*>>.body):begin', function () use ($app) {
             $this->part('accessibility/controls-itens');
         });
 
