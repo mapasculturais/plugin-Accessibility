@@ -64,8 +64,7 @@ app.component('accessibility-controls-itens', {
             });
         },
         resetFontSize() {
-            this.ajustContrast();
-            
+            document.body.classList.remove("pojo-a11y-negative-contrast");
             this._originalFontSizes.forEach(item => {
                 item.element.style.fontSize = item.fontSize;
                 item.element.style.lineHeight = item.lineHeight;
